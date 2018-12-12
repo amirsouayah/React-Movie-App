@@ -8,7 +8,8 @@ class Header extends Component {
     }
     handelchange=(event)=>{
         this.setState({keyword:event.target.value})
-        this.props.searchname(this.state.keyword)
+        this.props.searchname(event.target.value)
+        // this.props.searchname(this.state.keyword)
     }
     render() { 
         return (<div className='header-app'> 

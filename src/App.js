@@ -20,13 +20,13 @@ const newstab=[{
   id:'3',
   title:'Demascus',
   image:'http://www.cimaflash.co/wp-content/uploads/2018/07/a98403829cc9b1b1e9452149586b1ea9-238x340.jpg',
-  rating : '4'
+  rating : '3'
   },
   {
   id:'4',
   title:'Natural Selection',
   image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvaeKdVGT-jpV7z68CooEwHzezOLOOS9CmwJ1vs3RKjCEFbnTs',
-  rating : '4'
+  rating : '2'
   }]
 
 
@@ -35,9 +35,31 @@ class App extends Component {
     super(props);
     this.state = {
         news:newstab,
-        filtred:newstab
-
+        filtred:newstab,
+        loading : "0"
       }
+
+      setTimeout(
+        function() {
+            this.setState({loading:"1"});
+        }
+        .bind(this),
+        3000
+    );
+}
+
+
+
+addNewMovie(newMovie) {
+  this.setState({
+    newstab: 
+    newstab.push({
+      id: Math.random,
+      title: prompt('Movie Title'),
+      image: prompt('url'),
+      rating : Number(prompt('movie rating: '))
+    })
+  })
 }
 search(keyword){
   let y =this.state.news.filter((el,i)=>{return el.title.toLowerCase().indexOf(keyword)>-1})
@@ -56,7 +78,10 @@ searchrating(rate){
        <Header searchname={x=>this.search(x) }/>
        <Star ratingname={z=>this.searchrating(z)}/>
           </div>
-       <Newslist news={this.state.filtred} /></div>
+       <Newslist className="movie-card" news={this.state.filtred} loading={this.state.loading} />
+          <div className="new-movie-card" onClick={()=> this.addNewMovie()}> + </div>
+       </div>
+       
       </div>
     );
   }

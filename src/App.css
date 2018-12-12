@@ -32,3 +32,12 @@ img{
   height: 200px;
 }
 
+.new-movie-card {
+  border: 2px solid black;
+  width: 200px;
+  height: 250px;
+  position: relative;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
